@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d2vcoksnn8obk"]
+
+[ext_resource type="Shader" uid="uid://bg601bkpr8ao2" path="res://shader_1.gdshader" id="1_a202f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_noarx"]
+render_priority = 0
+shader = ExtResource("1_a202f")
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_a0tk4"]
+material = SubResource("ShaderMaterial_noarx")
+radial_segments = 128
+rings = 64
+
+[node name="Node3D" type="Node3D" unique_id=178812220]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1500909849]
+mesh = SubResource("SphereMesh_a0tk4")

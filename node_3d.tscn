@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://bg601bkpr8ao2" path="res://shader_1.gdshader" id="1_a202f"]
 [ext_resource type="Shader" uid="uid://b304ph8eb3311" path="res://shader_2.gdshader" id="1_noarx"]
+[ext_resource type="Shader" uid="uid://dpqori02esbmf" path="res://shader_3.gdshader" id="3_a0tk4"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_noarx"]
 
@@ -41,6 +42,18 @@ material = SubResource("ShaderMaterial_noarx")
 radial_segments = 128
 rings = 64
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3fl7"]
+render_priority = 0
+shader = ExtResource("3_a0tk4")
+shader_parameter/jump_height = 2.0
+shader_parameter/speed = 2.0
+shader_parameter/squash = 0.5
+shader_parameter/rotation_speed = 5.0
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_jka67"]
+material = SubResource("ShaderMaterial_r3fl7")
+radius = 1.0
+
 [node name="Cena" type="Node3D" unique_id=178812220]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1052921108]
@@ -60,5 +73,11 @@ mesh = SubResource("PlaneMesh_jsk3o")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objeto3" unique_id=1163497957]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014267921, 0.49999976, -0.0025529861)
 mesh = SubResource("SphereMesh_a0tk4")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=754118565]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1818038132]
+transform = Transform3D(0.99995023, -0.006707931, -0.007393666, -0.007642917, -0.037926145, -0.9992511, 0.0064224955, 0.9992579, -0.037975535, -1.8942575, 0.83189154, 5.002942)
+mesh = SubResource("TubeTrailMesh_jka67")

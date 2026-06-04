@@ -1,6 +1,33 @@
 [gd_scene format=3 uid="uid://d2vcoksnn8obk"]
 
 [ext_resource type="Shader" uid="uid://bg601bkpr8ao2" path="res://shader_1.gdshader" id="1_a202f"]
+[ext_resource type="Shader" uid="uid://b304ph8eb3311" path="res://shader_2.gdshader" id="1_noarx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_noarx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a0tk4"]
+noise = SubResource("FastNoiseLite_noarx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r3fl7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jka67"]
+noise = SubResource("FastNoiseLite_r3fl7")
+as_normal_map = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5arm"]
+render_priority = 0
+shader = ExtResource("1_noarx")
+shader_parameter/heightscale = 2.5
+shader_parameter/noise = SubResource("NoiseTexture2D_a0tk4")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_jka67")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
+lightmap_size_hint = Vector2i(55, 55)
+material = SubResource("ShaderMaterial_i5arm")
+uv2_padding = 5.69
+size = Vector2(4, 4)
+subdivide_width = 32
+subdivide_depth = 32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_noarx"]
 render_priority = 0
@@ -14,8 +41,24 @@ material = SubResource("ShaderMaterial_noarx")
 radial_segments = 128
 rings = 64
 
-[node name="Node3D" type="Node3D" unique_id=178812220]
+[node name="Cena" type="Node3D" unique_id=178812220]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1500909849]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1052921108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10896599, 2.7802596, 0.13038957)
+omni_range = 4096.0
+
+[node name="Plano" type="Node3D" parent="." unique_id=1966541442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.697979, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plano" unique_id=1521318059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1233616, 0)
+gi_mode = 2
+gi_lightmap_texel_scale = 0.945
+mesh = SubResource("PlaneMesh_jsk3o")
+
+[node name="Objeto3" type="Node3D" parent="." unique_id=1946623805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objeto3" unique_id=1163497957]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("SphereMesh_a0tk4")

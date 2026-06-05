@@ -20,9 +20,8 @@ void vertex() {
 
 void fragment() {
 	NORMAL_MAP = texture(normalmap, tex_position).xyz;
-	ALBEDO = vec3(0.1, 0.3, 0.5);
-	METALLIC = 0.5;
-	ROUGHNESS = 0.5;
+	ALBEDO = vec3(0.05, 0.3, 0.05);
+	ROUGHNESS = 1.0;
 	// Called for every pixel the material is visible on.
 }
 

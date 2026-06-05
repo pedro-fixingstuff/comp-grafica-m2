@@ -40,7 +40,8 @@ void vertex() {
 }
 
 void fragment() {
-	ALBEDO = vec3(1.0, 0.1, 0.1);
+	ALBEDO = vec3(0.1, 0.1, 0.1);
+	METALLIC = 1.0;
 }
 
 //void light() {
